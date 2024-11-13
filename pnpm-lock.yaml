@@ -27,8 +27,8 @@ importers:
         specifier: 10.4.19
         version: 10.4.19(postcss@8.4.39)
       htmx.org:
-        specifier: 1.9.12
-        version: 1.9.12
+        specifier: ^2.0.3
+        version: 2.0.3
       postcss:
         specifier: 8.4.39
         version: 8.4.39
@@ -257,8 +257,8 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  htmx.org@1.9.12:
-    resolution: {integrity: sha512-VZAohXyF7xPGS52IM8d1T1283y+X4D+Owf3qY1NZ9RuBypyu9l8cGsxUMAG5fEAb/DhT7rDoJ9Hpu5/HxFD3cw==}
+  htmx.org@2.0.3:
+    resolution: {integrity: sha512-AeoJUAjkCVVajbfKX+3sVQBTCt8Ct4lif1T+z/tptTXo8+8yyq3QIMQQe/IT+R8ssfrO1I0DeX4CAronzCL6oA==}
 
   is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
@@ -769,7 +769,7 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  htmx.org@1.9.12: {}
+  htmx.org@2.0.3: {}
 
   is-binary-path@2.1.0:
     dependencies:
