@@ -1,10 +1,92 @@
 {% load static %}
 
-{% for product in products %}
-    <div class="flex flex-row">
-        {{ product.name }}<br>
-        {{ product.description }}<br>
-        {{ product.price }}<br>
-        <img src="{% static 'img/'|add:product.img %}" alt="{{ product.name }}" />
+<!-- Grid de productos responsivo -->
+<div
+    class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-[15px] mx-[30px]"
+>
+    {% for product in products %}
+    <div
+        class="product-item border border-gray-300 p-4 rounded-lg flex flex-col items-center bg-white shadow-sm"
+        data-filter-id="{{ product.filterId }}"
+    >
+        <img
+            src="{% static 'img/'|add:product.img %}"
+            alt="{{ product.name }}"
+            class="w-80 h-auto mb-4"
+        />
+        <h2 class="text-[22px] font-bold text-center">{{ product.name }}</h2>
+        <p class="text-[16px] text-gray-500 text-center">
+            {{ product.description }}
+        </p>
+        <p class="text-[22px] font-bold text-gray-900 text-center mt-2">
+            $ {{ product.price }}
+        </p>
+
+        <!-- Botón Agregar -->
+        <button
+            class="mt-2 w-full py-2 text-center rounded bg-gray-100 text-black font-bold hover:bg-gray-200"
+        >
+            AGREGAR
+        </button>
     </div>
-{% endfor %}
+    {% endfor %}
+</div>
+
+<!-- Botón flotante de filtro centrado -->
+<div class="fixed bottom-4 w-full flex justify-center">
+    <button
+        onclick="toggleFilterModal()"
+        class="bg-black text-white px-6 py-3 rounded-full shadow-md flex items-center text-lg font-bold hover:bg-gray-800"
+    >
+        FILTRAR <span class="ml-2 text-xl">&#x25BC;</span>
+    </button>
+</div>
+
+<div
+    id="filterModal"
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+>
+    <div class="bg-white p-6 rounded-lg w-3/4 sm:w-1/2 relative">
+        <button
+            onclick="toggleFilterModal()"
+            class="absolute top-4 right-4 text-black text-xl font-bold"
+            aria-label="Cerrar modal"
+        >
+            &#x2715;
+        </button>
+        <h2 class="text-2xl font-bold mb-4 text-center">Opciones de Filtro</h2>
+
+        <label class="block mb-2">
+            <input type="checkbox" value="1" class="filter-checkbox" /> Rubia
+        </label>
+        <label class="block mb-2">
+            <input type="checkbox" value="2" class="filter-checkbox" /> Morena
+        </label>
+        <label class="block mb-4">
+            <input type="checkbox" value="3" class="filter-checkbox" /> Roja
+        </label>
+
+        <div class="flex justify-between mt-4 gap-2">
+            <button
+                onclick="resetFilters()"
+                class="bg-gray-200 text-black p-2 rounded w-1/2"
+            >
+                LIMPIAR
+            </button>
+            <button
+                onclick="applyFilters()"
+                class="bg-black text-white p-2 rounded w-1/2"
+            >
+                FILTRAR
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Script para manejar el modal -->
+<script>
+    function toggleFilterModal() {
+        const modal = document.getElementById("filterModal");
+        modal.classList.toggle("hidden");
+    }
+</script>
